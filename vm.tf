@@ -88,9 +88,12 @@ resource "azurerm_virtual_machine" "vm" {
     }
   }
 	
-  boot_diagnostics {
-		enabled               = var.boot_diagnostics_endpoint != null ? true : false
-		storage_uri           = var.boot_diagnostics_endpoint
+  dynamic "boot_diagnostics" {
+    for_each = var.boot_diagnostics_endpoint == null ? [] : ["BootDiagnostics"]
+    content {
+		  enabled               = var.boot_diagnostics_endpoint != null ? true : false
+		  storage_uri           = var.boot_diagnostics_endpoint
+    }
 	}
 
 	#network_interface_ids  = [element(azurerm_network_interface.nic.*.id, count.index)]
