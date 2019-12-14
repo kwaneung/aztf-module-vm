@@ -2,7 +2,7 @@
 Azure Terraform Module for Virtual Machine
 
 Example) Create VM
-
+```
 module "service1" {
   source                            = "git://github.com/hyundonk/aztf-module-vm.git"
 
@@ -39,3 +39,4 @@ module "service1" {
   enable_network_watcher_extension  = false
   enable_dependency_agent           = false
 }
+```
