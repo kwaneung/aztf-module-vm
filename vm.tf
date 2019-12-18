@@ -65,7 +65,7 @@ resource "azurerm_virtual_machine" "vm" {
 		name      			      = format("%s-%02d-osdisk", local.vm_name, count.index + 1)
 		caching       		    = "ReadWrite"
 		create_option 		    = "FromImage"
-		managed_disk_type 	  = "Premium_LRS"
+		managed_disk_type 	  = "Standard_LRS"
 	}
 
 	os_profile {
